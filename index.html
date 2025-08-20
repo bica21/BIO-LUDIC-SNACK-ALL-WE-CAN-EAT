@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  
-    <!-- PUT YOUR PAGE NAME -->
-    <title>BICA</title>
-
     <meta charset="utf-8" />
+    <title>BICA</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <link rel="stylesheet" href="my-styles.css" />
-    
-    <!-- The following libraries and polyfills are recommended to maximize browser support -->
-    <!-- NOTE: you must adjust the paths as appropriate for your project -->
-    
-    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+
+    <!-- Fokus-Polyfill -->
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 
+    <!-- Model Viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      model-viewer {
+        width: 100%;
+        height: 70vh;
+        background-color: black;
+      }
+
+      #ar-button {
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      #ar-button img {
+        width: 140px; /* Größe anpassen */
+        height: auto;
+      }
+
+      footer {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+
+      footer p {
+        margin: 0.3rem 0;
+      }
+    </style>
   </head>
-
   <body>
-    
-    
-    
-    
-    
-    <!-- HERE IS WHERE THE MAGIC HAPPENS!
-src = link to your glb asset
-ios-src = link to your USDZ asset (for iOS/iPhone) 
-shadow-intensity= how visible you want your shadows to be
-
-skybox & environment images = upload and link your hdr image
-the rest leaveit as it is!-->
-    
     <model-viewer
       src="assets/BL_frida.glb"
-   
-      shadow-intensity="1"
-                  
-      skybox-image=
-      
-      environment-image=
-      exposure="4"
-                  
+      ios-src="assets/BL_frida.usdz"
       ar
       ar-modes="webxr scene-viewer quick-look"
       ar-placement="floor"
-      camera-controls
-      autoplay
       ar-scale="auto"
+      camera-controls
       auto-rotate
+      autoplay
+      shadow-intensity="1"
+      exposure="1"
     >
-      
-      <!-- *optional: REPLACE THE URL WITH YOUR GRAPHIC FOR THE AR BUTTON -->
-      <button slot="ar-button" id="ar-button"  
-              style= "background-image: url(https://cdn.glitch.com/9925848b-5a39-4193-9260-14fab8f75609%2FGlyph-ARKit-Badge-WithName.png?v=1621706814890)"
-      ></button>
+      <!-- AR-Button mit PNG -->
+      <button slot="ar-button" id="ar-button">
+        <img src="assets/ar-button.png" alt="View in AR" />
+      </button>
     </model-viewer>
-   
-   
 
-  
- 
-    
- <!-- DO NOT DELETE! -->
-<footer>
-
-  <p>PERMA BIO LUDIC METABOLISM ALL YOU CAN PLAY BETWEEN HOMO LUDENS AND BACTERIA </p>
-     
-    <p style= "font-size: 7px">
-    <a href="https://martinamenegon.xyz/">Ivan Bica</a>
-      *
-    Digital Design and Virtuality (2025)
-      *
-    <a href="https://transmedialekunst.com/en/">EGC</a>
-      *
-    <a href="https://www.dieangewandte.at/">Die Angewandte</a>
-  </p>
-  <br>
-</footer> 
-
-    <!-- DO NOT DELETE! -->
-  <!-- 💁 Include both scripts below to support all browsers! -->
-
-  <!-- Loads <model-viewer> for modern browsers: -->
-  <script type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-  </script>
-  </body>
+    <footer>
+      <p>
+        PERMA BIO LUDIC METABOLISM ALL YOU CAN PLAY BETWEEN HOMO LUDENS AND BACTERIA
+      </p>
+      <p style="font-size:7px">
+        <a href="https://martinamenegon.xyz/" style="color:white;">Ivan Bica</a> *
+        Digital Design and Virtuality (2025) *
+        <a href="https://transmedialekunst.com/en/" style="color:white;">EGC</a> *
+        <a href="https://www.dieangewandte.at/" style="color:white;">Die Angewandte</a>
+      </p>
+    </footer>
+  </body>
 </html>
