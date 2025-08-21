@@ -41,7 +41,7 @@
       }
 
       #ar-button img {
-        width: 80px; /* Größe anpassen */
+        width: 80px; 
         height: auto;
       }
 
@@ -56,6 +56,7 @@
     </style>
   </head>
   <body>
+    <!-- 3D Model -->
     <model-viewer
       src="assets/BL_frida.glb"
       ios-src="assets/BL_frida.usdz"
@@ -69,15 +70,27 @@
       shadow-intensity="1"
       exposure="1"
     >
-      <!-- AR-Button mit PNG -->
       <button slot="ar-button" id="ar-button">
         <img src="assets/ar_button.png" alt="View in AR" />
       </button>
     </model-viewer>
 
+    <!-- Audio element -->
+    <audio id="bg-sound" src="assets/fire_sound.mp3" loop></audio>
+
+    <script>
+      // Autoplay fix: zvuk će se pokrenuti tek nakon prve interakcije (click/tap)
+      const audio = document.getElementById('bg-sound');
+      document.body.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().catch(err => console.log(err));
+        }
+      });
+    </script>
+
     <footer>
       <p>
-         βIO⁻⁹ ∞ LUDIC⁹ SNACK: ALL WE CAN EAT
+        βIO⁻⁹ ∞ LUDIC⁹ SNACK: ALL WE CAN EAT
       </p>
       <p style="font-size:7px">
         <a href="https://martinamenegon.xyz/" style="color:white;">Ivan Bica</a> *
@@ -86,5 +99,6 @@
         <a href="https://www.dieangewandte.at/" style="color:white;">Die Angewandte</a>
       </p>
     </footer>
-  </body>
+  </body>
 </html>
+
